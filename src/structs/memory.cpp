@@ -26,7 +26,7 @@ uintptr_t getLibBase_r(const char *name)
 namespace Memory
 {
     uintptr_t _base = 0x0;
-    uint32_t _pageSize = sysconf(_SC_PAGE_SIZE);
+    long _pageSize = sysconf(_SC_PAGE_SIZE);
     uintptr_t getIl2cppBase()
     {
         if (_base != 0)

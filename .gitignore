@@ -37,3 +37,6 @@ build/
 .vscode/
 # gamedata funny moment
 src/gamedata/il2cpp.h
+
+CMakeLists.txt
+# FIXME: ^

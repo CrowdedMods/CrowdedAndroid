@@ -12,7 +12,7 @@
 namespace Memory
 {
     extern uintptr_t _base;
-    extern uint32_t _pageSize;
+    extern long _pageSize;
 
     inline void protect(uintptr_t addr, int flags)
     {
