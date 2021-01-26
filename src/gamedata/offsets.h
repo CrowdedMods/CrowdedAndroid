@@ -59,9 +59,10 @@ struct OFFSETS_t {
     uintptr_t PlayerControl_RpcSetColor         = 0x0B0A974;
     uintptr_t PlayerVoteArea_GetVotedFor        = 0x0E5725C;
 
-    uintptr_t MeetingHud_PopulateResults_m      = 0x0ECF70C; // don't edit uwu
-    uintptr_t PlayerTab_UpdateAvailableColors_m = 0x0E4F2D8;
-    uintptr_t SecurityLogger_ctor_m             = 0x1086C3C;
+    uintptr_t MeetingHud_PopulateResults_m              = 0x0ECF70C; // don't edit uwu
+    uintptr_t PlayerTab_UpdateAvailableColors_m         = 0x0E4F2D8;
+    uintptr_t SecurityLogger_ctor_m                     = 0x1086C3C;
+    uintptr_t GameOptionsData_GetAdjustedNumImpostors_m = 0x0BDF990;
 #elif defined(__aarch64__)
     uintptr_t il2cpp_array_new                  = 0x05BAC84;
     uintptr_t String_Equals                     = 0x09FD0FC; // yes
@@ -110,9 +111,10 @@ struct OFFSETS_t {
     uintptr_t PlayerControl_RpcSetColor         = 0x0D95760;
     uintptr_t PlayerVoteArea_GetVotedFor        = 0x1041674;
 
-    uintptr_t MeetingHud_PopulateResults_m      = 0x109FC7C + 0x208; // JGEFNHBFEMA
-    uintptr_t PlayerTab_UpdateAvailableColors_m = 0x103B0C4 + 0x0E4;
-    uintptr_t SecurityLogger_ctor_m             = 0x11FEA54 + 0x044;
+    uintptr_t MeetingHud_PopulateResults_m              = 0x109FC7C + 0x208; // JGEFNHBFEMA
+    uintptr_t PlayerTab_UpdateAvailableColors_m         = 0x103B0C4 + 0x0E4;
+    uintptr_t SecurityLogger_ctor_m                     = 0x11FEA54 + 0x044;
+    uintptr_t GameOptionsData_GetAdjustedNumImpostors_m = 0x0E468F8 + 0x068; // MNDMMKIDNAL
 #endif
 };
 extern const OFFSETS_t OFFSETS;

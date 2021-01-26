@@ -33,11 +33,22 @@ namespace GameDataPatches
         Memory::writeOffset(OFFSETS.PlayerTab_UpdateAvailableColors_m, (char*)opcodes, sizeof(opcodes));
         constexpr BYTE otheropcodes[] = {
 #if defined(__ARM_ARCH_7A__)
-            0x7F
+            0x7F            // replace hardcoded 10 with 127
 #elif defined(__aarch64__)
-            0xE1, 0x0F
+            0xE1, 0x0F  
 #endif
         };
         Memory::writeOffset(OFFSETS.SecurityLogger_ctor_m, (char*)otheropcodes, sizeof(otheropcodes)); // replace 10 with 127
+        constexpr BYTE impostoramountopcodes[] = {
+#if defined(__ARM_ARCH_7A__)
+            0x38, 0x00, 0x94, 0xE5,         // LDR R0, [R4, #0x38]      @ original opcode, but store in R0 (return)
+            0x70, 0x4C, 0xBD, 0xE8,         // POP {R4-R6,R10,R11,LR}   @ postlude
+            0x1E, 0xFF, 0x2F, 0xE1          // BX LR                    @ return
+#elif defined(__aarch64__)
+            0x00, 0x41, 0x40, 0xB9,         // LDR W0, [X8,#0x40]       @ original opcode, but store in W0 (return)
+            0xC0, 0x03, 0x5F, 0xD6          // RET
+#endif
+        };
+        Memory::writeOffset(OFFSETS.GameOptionsData_GetAdjustedNumImpostors_m, (char*)impostoramountopcodes, sizeof(impostoramountopcodes));
     }
 }
