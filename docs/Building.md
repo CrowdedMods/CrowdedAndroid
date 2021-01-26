@@ -20,6 +20,7 @@ aarch64 is not supported yet (WIP), so if you see anything related to x64 - igno
 4. Move dumped `il2cpp.h` to `src/gamedata`
 5. Build or get a release of [DobbyHook](https://github.com/jmpews/Dobby/) (both armeabi-v7a and arm64-v8a)
 5.1 Put its `.a` libs in `lib/ARCH_NAME/`
+6. Setup your `NDK_ROOT` environment
 ## Building
 ### Using VS code/any other IDE extensions
 Just press configure and then build
