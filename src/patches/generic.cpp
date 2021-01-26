@@ -6,7 +6,7 @@ namespace GameDataPatches
     {
         for(auto i = 0; i < inst->fields.AllPlayers->fields._size; i++)
         {
-            if(inst->fields.AllPlayers->fields._items->m_Items[i]->fields.DNFAGBBPHPI == id)
+            if(inst->fields.AllPlayers->fields._items->m_Items[i]->fields.M_playerId == id)
                 return false;
         }
         return true;
