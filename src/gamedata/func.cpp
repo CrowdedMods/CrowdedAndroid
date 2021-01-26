@@ -49,6 +49,7 @@ DummyBehaviour_Start_f            *DummyBehaviour_Start_o;
 ShipStatus_Start_f                *ShipStatus_Start_o;
 GameData_GetAvailableId_f         *GameData_GetAvailableId_o;
 PlayerVoteArea_GetVotedFor_f      *PlayerVoteArea_GetVotedFor_o;
+KeyMinigame_Start_f               *KeyMinigame_Start_o;
 
 void init_functions()
 {
@@ -91,6 +92,7 @@ void init_functions()
     FUNC_HPTR(ShipStatus_Start);
     FUNC_HPTR(GameData_GetAvailableId);
     FUNC_HPTR(PlayerVoteArea_GetVotedFor);
+    FUNC_HPTR(KeyMinigame_Start);
 }
 
 #undef FUNC_PTR

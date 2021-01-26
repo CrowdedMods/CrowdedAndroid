@@ -84,6 +84,7 @@ void init_hooks()
     DO_HOOK(VersionShower_Start);
     DO_HOOK(DummyBehaviour_Start);
     DO_HOOK(PlayerVoteArea_GetVotedFor);
+    DO_HOOK(KeyMinigame_Start);
     //DO_HOOK(ShipStatus_Start);
     
     DO_PATCH(MeetingHud, Update);
