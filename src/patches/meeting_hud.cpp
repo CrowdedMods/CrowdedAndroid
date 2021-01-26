@@ -9,6 +9,7 @@ enum TouchPhase // too lazy to import it dynamically
     Canceled = 4
 };
 
+// i hate c#
 namespace IEnumerableUtils
 {
     bool orderByIsDead(PlayerVoteArea_o *a, PlayerVoteArea_o *b)
@@ -69,7 +70,7 @@ namespace MeetingHudPatches
             if(item.didVote && !item.isDead && item.votedFor > -2 && item.votedFor < len)
             {
                 result[item.votedFor+1]++;
-                LOGF("added a vote to %d", item.votedFor+1);
+                LOGF("added a vote to %d", item.votedFor);
             }
         }
         return result;
@@ -106,9 +107,11 @@ namespace MeetingHudPatches
             0xDA, 0x00, 0x90, 0xE1,             // LDRSB R0, [R0, R10]   @ Load signed byte by offset which is stored in R10
         };
         Memory::writeOffset(OFFSETS.MeetingHud_PopulateResults_m, (char *) opcodes, sizeof(opcodes));*/
+
+        /// inline asm patch to make app choose votes in our vat instead of extracting it from the state
         const BYTE opcodes[] = {
 #if defined(__ARM_ARCH_7A__)
-            0x0A, 0x00, 0xA0, 0xE1              // MOV R0, R10           @ load iteration index instead of pointer to an object
+            0x0A, 0x00, 0xA0, 0xE1              // MOV R0, R10           @ load iteration index instead of state
 #elif defined(__aarch64__)
             0xE0, 0x03, 0x1C, 0xAA              // MOV X0, X28
 #endif
@@ -119,6 +122,7 @@ namespace MeetingHudPatches
     void Update_h(MeetingHud_o *pThis)
     {
         MeetingHud_Update_o(pThis);
+        // swipe detect
         if (Input_get_TouchCount() > 0)
         {
             UnityEngine_Touch_o touch = UnityEngine_Touch_o{};
@@ -180,7 +184,7 @@ namespace MeetingHudPatches
         auto cvotes = calculateVotes(playerStates);
         SBYTE maxId = indexOfMax(cvotes, playerStates->max_length+1) - 1;
         bool tie = maxId == -2;
-        LOGF("max id is %d, tie: %d", maxId, tie);
+        LOGF("max id is %d, tie: %d", maxId+1, tie);
         PlayerInfo *exiled = maxId < 0 ? NULL : GameData_GetPlayerById((*GameData__Type)->static_fields->Instance, maxId);
         auto states = IEnumerableUtils::selectVoteState(playerStates);
         auto votes = IEnumerableUtils::selectVotedFor(playerStates);

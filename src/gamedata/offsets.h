@@ -3,13 +3,18 @@
 
 #include <unistd.h>
 
+/// Main data file where all stuff to update is localted (almost)
+
+/// Field aliases
 #define M_playerStates IAKLDPGLPFJ // MeetingHud
 #define M_myPlayer LEIJCJIJMCD // DummyBehaviour
 #define M_playerId DNFAGBBPHPI // PlayerInfo
 #define M_targetSlotId KMJIEGNOBDB // KeyMinigame
 
+/// Data type aliases
 #define PlayerInfo GameData_ ## LFILBENDJJI ## _o
 
+/// function offsets
 struct OFFSETS_t {
 #if defined(__ARM_ARCH_7A__)
     uintptr_t il2cpp_array_new                  = 0x021E608;
@@ -64,7 +69,7 @@ struct OFFSETS_t {
     uintptr_t PlayerTab_UpdateAvailableColors_m         = 0x0E4F2D8;
     uintptr_t SecurityLogger_ctor_m                     = 0x1086C3C;
     uintptr_t GameOptionsData_GetAdjustedNumImpostors_m = 0x0BDF990;
-#elif defined(__aarch64__)
+#elif defined(__aarch64__) // arm64 doesn't work yet (hook lib issue)
     uintptr_t il2cpp_array_new                  = 0x05BAC84;
     uintptr_t String_Equals                     = 0x09FD0FC; // yes
     uintptr_t String_Concat                     = 0x09FBF74;
@@ -121,6 +126,7 @@ struct OFFSETS_t {
 };
 extern const OFFSETS_t OFFSETS;
 
+/// Typedef offsets (you can get it with il2cppinsector)
 struct TYPE_OFFSETS_t
 {
 #if defined(__ARM_ARCH_7A__)

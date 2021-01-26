@@ -1,4 +1,4 @@
-#define _DEBUG 1
+#define _DEBUG 1 // have to do it manually since i'm new at cmake
 
 #include <jni.h>
 
@@ -16,6 +16,7 @@ inline void init()
     LOGF("inited gamedata patches");
 }
 
+// calls on library load (wow)
 JNIEXPORT jint JNI_OnLoad(JavaVM*, void*)
 {
     LOGF("loaded");

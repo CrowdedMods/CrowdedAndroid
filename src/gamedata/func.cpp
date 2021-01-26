@@ -1,8 +1,10 @@
 #include "func.h"
 
+// define function pointer for calling it
 #define FUNC_PTR(__func)  __func       = (__func ## _f *) Memory::getAbsoluteAddress(OFFSETS.__func)
+// define original function buffer (for hooks)
 #define FUNC_HPTR(__func) __func ## _o = (__func ## _f *) Memory::getAbsoluteAddress(OFFSETS.__func)
-//#define PATCH_HPTR(__ns, __func) __ns::__func ## _o = (__ns ## _ ## __func ## _f *) Memory::getAbsoluteAddress(OFFSETS.__ns ## _ ## __func)
+// complete defining static pointers
 #define DO_TYPE(__type) __type ## _c **__type ## __Type = (__type ## _c**) Memory::getAbsoluteAddress(TYPE_OFFSETS.__type)
 
 DO_TYPE(PlayerControl);
@@ -10,6 +12,7 @@ DO_TYPE(GameData);
 DO_TYPE(AmongUsClient);
 DO_TYPE(System_Byte);
 
+// complete defining functions pointers
 String_Equals_f                   *String_Equals;
 String_Concat_f                   *String_Concat;
 Marshal_PtrToStringAnsi_f         *Marshal_PtrToStringAnsi;
@@ -97,5 +100,4 @@ void init_functions()
 
 #undef FUNC_PTR
 #undef FUNC_HPTR
-//#undef PATCH_HPTR
 #undef DO_TYPEDEF

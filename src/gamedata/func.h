@@ -5,18 +5,26 @@
 #include "il2cpp.h"
 #include "../structs/memory.h"
 
+/// Main gamedata file
+
+/// C# types
 #define BYTE uint8_t
 #define SBYTE int8_t
+
+// define extern static pointers
 #define DO_ETYPE(__type) extern __type ## _c **__type ## __Type
 
 DO_ETYPE(PlayerControl);
 DO_ETYPE(GameData);
 DO_ETYPE(AmongUsClient);
-DO_ETYPE(System_Byte);
+DO_ETYPE(System_Byte); // required for array
 
+// macros to use c# stuff easier
 #define CREATE_ARRAY(__type, __size) ((__type ## _array *(*)(void*, il2cpp_array_size_t)) Memory::getAbsoluteAddress(OFFSETS.il2cpp_array_new))((void*)*__type ## __Type, __size)
 #define NSTR(str) Marshal_PtrToStringAnsi(str)
 
+/// Main function prototype defenitions. Il2CppInspector header files didn't work with ndk so i decieded to go this way
+/// Also i think i add arguments names for ide tips, but too lazy :ъ
 typedef bool                       String_Equals_f                      (System_String_o*, System_String_o*);
 typedef System_String_o           *String_Concat_f                      (System_String_o*, System_String_o*);
 typedef System_String_o           *Marshal_PtrToStringAnsi_f            (const char *);
@@ -58,6 +66,7 @@ typedef SBYTE                      GameData_GetAvailableId_f            (GameDat
 typedef SBYTE                      PlayerVoteArea_GetVotedFor_f         (uint32_t);
 typedef void                       KeyMinigame_Start_f                  (KeyMinigame_o*);
 
+/// defining pointers to these functions (wanted to make a macro very hard honestly)
 extern String_Equals_f                   *String_Equals;
 extern String_Concat_f                   *String_Concat;
 extern Marshal_PtrToStringAnsi_f         *Marshal_PtrToStringAnsi;

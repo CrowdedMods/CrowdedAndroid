@@ -66,7 +66,9 @@ void VersionShower_Start_h(VersionShower_o *pThis)
 
 SBYTE PlayerVoteArea_GetVotedFor_h(uint32_t index)
 {
+#if defined(__aarch64__) // i'm sure everything is ok with x32, didn't test x64
     LOGF("index is: %d", index);
+#endif
     return MeetingHudPatches::votes[index];
 }
 
@@ -92,12 +94,12 @@ void init_hooks()
     DO_PATCH(MeetingHud, CheckForEndVoting);
 
     DO_PATCH(GameData, GetAvailableId);
-    void** buf = (void**)new BYTE[4];
+    void** buf = (void**)new BYTE[4]; // useless! Yay!
     DobbyHook(
         (void*)Memory::getAbsoluteAddress(OFFSETS.PlayerControl_CheckColor),
         (void*)Memory::getAbsoluteAddress(OFFSETS.PlayerControl_RpcSetColor),
         buf
-    );
+    ); // redirect CheckColor to RpcSetColor
 }
 #undef DO_HOOK
 #undef DO_PATCH

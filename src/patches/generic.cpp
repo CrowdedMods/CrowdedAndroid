@@ -23,6 +23,7 @@ namespace GameDataPatches
 
     void init()
     {
+        // inline asm patch to allow choosing already used colors
         constexpr BYTE opcodes[] = {
 #if defined(__ARM_ARCH_7A__)
             0xF0, 0x8B, 0xBD, 0xE8      // POP {R4-R9,R11,PC} (return)
@@ -31,6 +32,7 @@ namespace GameDataPatches
 #endif
         };
         Memory::writeOffset(OFFSETS.PlayerTab_UpdateAvailableColors_m, (char*)opcodes, sizeof(opcodes));
+        // inline asm patch to fix mira logs
         constexpr BYTE otheropcodes[] = {
 #if defined(__ARM_ARCH_7A__)
             0x7F            // replace hardcoded 10 with 127
@@ -38,7 +40,8 @@ namespace GameDataPatches
             0xE1, 0x0F  
 #endif
         };
-        Memory::writeOffset(OFFSETS.SecurityLogger_ctor_m, (char*)otheropcodes, sizeof(otheropcodes)); // replace 10 with 127
+        Memory::writeOffset(OFFSETS.SecurityLogger_ctor_m, (char*)otheropcodes, sizeof(otheropcodes));
+        // inline asm patch to force return impostor amoung instead of adjusted one
         constexpr BYTE impostoramountopcodes[] = {
 #if defined(__ARM_ARCH_7A__)
             0x38, 0x00, 0x94, 0xE5,         // LDR R0, [R4, #0x38]      @ original opcode, but store in R0 (return)
