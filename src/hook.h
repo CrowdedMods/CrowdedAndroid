@@ -94,11 +94,11 @@ void init_hooks()
     DO_PATCH(MeetingHud, CheckForEndVoting);
 
     DO_PATCH(GameData, GetAvailableId);
-    void** buf = (void**)new BYTE[4]; // useless! Yay!
+    BYTE* buf = new BYTE[4]; // useless! Yay!
     DobbyHook(
         (void*)Memory::getAbsoluteAddress(OFFSETS.PlayerControl_CheckColor),
         (void*)Memory::getAbsoluteAddress(OFFSETS.PlayerControl_RpcSetColor),
-        buf
+        (void**)&buf
     ); // redirect CheckColor to RpcSetColor
 }
 #undef DO_HOOK
