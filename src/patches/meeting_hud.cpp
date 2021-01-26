@@ -66,7 +66,7 @@ namespace MeetingHudPatches
         for(size_t i = 0; i < len; i++)
         {
             auto item = arr->m_Items[i]->fields;
-            if(item.didVote && !item.isDead && item.votedFor > -2 && item.votedFor < len-1)
+            if(item.didVote && !item.isDead && item.votedFor > -2 && item.votedFor < len)
             {
                 result[item.votedFor+1]++;
                 LOGF("added a vote to %d", item.votedFor+1);
