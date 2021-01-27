@@ -73,6 +73,15 @@ void KeyMinigame_Start_h(KeyMinigame_o* pThis)
     KeySlotBehaviour_SetHighlight(pThis->fields.Slots->m_Items[pThis->fields.M_targetSlotId]);
 }
 
+void PingTracker_Update_h(PingTracker_o* pThis)
+{
+    PingTracker_Update_o(pThis);
+    pThis->fields.text->fields.Text = String_Concat(
+        pThis->fields.text->fields.Text,
+        NSTR("\n[FFB793FF]> CrowdedMod <[]")
+    );
+}
+
 namespace GameDataPatches
 {
     bool checkId(GameData_o* inst, SBYTE id)

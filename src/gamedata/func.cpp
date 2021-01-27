@@ -53,6 +53,7 @@ ShipStatus_Start_f                *ShipStatus_Start_o;
 GameData_GetAvailableId_f         *GameData_GetAvailableId_o;
 PlayerVoteArea_GetVotedFor_f      *PlayerVoteArea_GetVotedFor_o;
 KeyMinigame_Start_f               *KeyMinigame_Start_o;
+PingTracker_Update_f              *PingTracker_Update_o;
 
 void init_functions()
 {
@@ -96,6 +97,7 @@ void init_functions()
     FUNC_HPTR(GameData_GetAvailableId);
     FUNC_HPTR(PlayerVoteArea_GetVotedFor);
     FUNC_HPTR(KeyMinigame_Start);
+    FUNC_HPTR(PingTracker_Update);
 }
 
 #undef FUNC_PTR

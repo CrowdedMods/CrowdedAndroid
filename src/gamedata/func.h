@@ -65,6 +65,7 @@ typedef void                       DummyBehaviour_Start_f               (DummyBe
 typedef SBYTE                      GameData_GetAvailableId_f            (GameData_o*);
 typedef SBYTE                      PlayerVoteArea_GetVotedFor_f         (uint32_t);
 typedef void                       KeyMinigame_Start_f                  (KeyMinigame_o*);
+typedef void                       PingTracker_Update_f                 (PingTracker_o*);
 
 /// defining pointers to these functions (wanted to make a macro very hard honestly)
 extern String_Equals_f                   *String_Equals;
@@ -107,6 +108,7 @@ extern ShipStatus_Start_f                *ShipStatus_Start_o;
 extern GameData_GetAvailableId_f         *GameData_GetAvailableId_o;
 extern PlayerVoteArea_GetVotedFor_f      *PlayerVoteArea_GetVotedFor_o;
 extern KeyMinigame_Start_f               *KeyMinigame_Start_o;
+extern PingTracker_Update_f              *PingTracker_Update_o;
 
 void init_functions();
 

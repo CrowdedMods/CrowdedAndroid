@@ -64,6 +64,7 @@ struct OFFSETS_t {
     uintptr_t PlayerControl_RpcSetColor         = 0x0B0A974;
     uintptr_t PlayerVoteArea_GetVotedFor        = 0x0E5725C;
     uintptr_t KeyMinigame_Start                 = 0x10B2A98;
+    uintptr_t PingTracker_Update                = 0x0AE6A30;
 
     uintptr_t MeetingHud_PopulateResults_m              = 0x0ECF70C; // don't edit uwu
     uintptr_t PlayerTab_UpdateAvailableColors_m         = 0x0E4F2D8;
@@ -117,6 +118,7 @@ struct OFFSETS_t {
     uintptr_t PlayerControl_RpcSetColor         = 0x0D95760;
     uintptr_t PlayerVoteArea_GetVotedFor        = 0x1041674;
     uintptr_t KeyMinigame_Start                 = 0x12221E8;
+    uintptr_t PingTracker_Update                = 0x0D7A1DC;
 
     uintptr_t MeetingHud_PopulateResults_m              = 0x109FC7C + 0x208; // JGEFNHBFEMA
     uintptr_t PlayerTab_UpdateAvailableColors_m         = 0x103B0C4 + 0x0E4;
