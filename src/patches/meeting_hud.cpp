@@ -108,7 +108,7 @@ namespace MeetingHudPatches
         };
         Memory::writeOffset(OFFSETS.MeetingHud_PopulateResults_m, (char *) opcodes, sizeof(opcodes));*/
 
-        /// inline asm patch to make app choose votes in our vat instead of extracting it from the state
+        /// inline asm patch to make app choose votes in our var instead of extracting it from the state
         const BYTE opcodes[] = {
 #if defined(__ARM_ARCH_7A__)
             0x0A, 0x00, 0xA0, 0xE1              // MOV R0, R10           @ load iteration index instead of state
